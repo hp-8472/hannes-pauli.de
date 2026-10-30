@@ -1,12 +1,12 @@
 # hannes-pauli.de
 
-Persönliches Portfolio für Embedded Systems Development, vorbereitet für GitHub Pages unter `https://hannes-pauli.de`. Der Kontakt erfolgt über einen direkten E-Mail-Button: Er öffnet das E-Mail-Programm des Besuchers mit einer neuen Nachricht an die berufliche Adresse. Die Webseite verarbeitet oder versendet selbst keine Formularnachrichten.
+Persönliches Portfolio für Embedded Systems Development, bereitgestellt mit GitHub Pages und vorgesehen für `https://hannes-pauli.de`. Der Kontakt erfolgt über einen direkten E-Mail-Button: Er öffnet das E-Mail-Programm des Besuchers mit einer neuen Nachricht an die berufliche Adresse. Die Webseite verarbeitet oder versendet selbst keine Formularnachrichten.
 
 ## Stand
 
-Die Oberfläche wird als statische Webseite veröffentlicht. Die E-Mail-Zustellung übernimmt das vom Besucher verwendete E-Mail-Programm zusammen mit dessen Anbieter. Für den Betrieb der Webseite sind keine Formularanbieter, SMTP-Zugangsdaten oder eigenen Backenddienste erforderlich.
+Die statische Webseite wurde am 30.10.2026 erstmals erfolgreich mit GitHub Actions auf GitHub Pages bereitgestellt. Der Umzugs-PR 1 ist zusammengeführt. Die E-Mail-Zustellung übernimmt das vom Besucher verwendete E-Mail-Programm zusammen mit dessen Anbieter. Für den Betrieb der Webseite sind keine Formularanbieter, SMTP-Zugangsdaten oder eigenen Backenddienste erforderlich.
 
-Die Domainverifizierung für das eigene GitHub-Konto wurde am 30.10.2026 abgeschlossen. Die Webrecords zeigen weiterhin auf die United-Domains-Parkseite; die Umschaltung auf GitHub Pages steht aus. Bestehende Mailrecords bleiben erhalten.
+Die Domainverifizierung für das eigene GitHub-Konto wurde am 30.10.2026 abgeschlossen. Die Webrecords zeigen weiterhin auf die United-Domains-Parkseite; die Umschaltung auf GitHub Pages steht aus. Die United-Domains-Sitzung ist während der Einrichtung abgelaufen; die Speicherversuche wurden abgewiesen und die erneute Anmeldung ist noch erforderlich. Bestehende Mailrecords bleiben erhalten.
 
 ## Bauen und ansehen
 
@@ -31,7 +31,7 @@ Die veröffentlichte berufliche E-Mail-Adresse kann aus dem Link ausgelesen werd
 
 ## GitHub Pages und Domain
 
-Der Workflow `.github/workflows/pages.yml` baut bei einem Push auf `main` oder einem manuellen Start und veröffentlicht ausschließlich `dist/`. Ein abgebrochener Build erzeugt kein neues Veröffentlichungsartefakt. Im Repository ist GitHub Actions als Veröffentlichungsquelle eingestellt. Die Umzugsvorbereitung liegt zunächst auf `task/github-pages-umzug`.
+Der Workflow `.github/workflows/pages.yml` baut bei einem Push auf `main` oder einem manuellen Start und veröffentlicht ausschließlich `dist/`. Ein abgebrochener Build erzeugt kein neues Veröffentlichungsartefakt. Im Repository ist GitHub Actions als Veröffentlichungsquelle eingestellt. Die Umzugsvorbereitung aus `task/github-pages-umzug` ist in `main` übernommen. `noindex` bleibt bis zur abschließenden Inhaltsfreigabe gesetzt.
 
 Der Build erzeugt `CNAME` mit `hannes-pauli.de` sowie `.nojekyll`. `hannes-pauli.de` ist bereits als benutzerdefinierte Domain in GitHub Pages gespeichert. Die Domain wurde am 30.10.2026 durch einen zusätzlichen DNS-TXT-Nachweis erfolgreich für das eigene GitHub-Konto verifiziert; der Status steht unter [GitHub Settings](https://github.com/settings/pages). Diesen TXT-Eintrag beibehalten. Web- und E-Mail-Records wurden dabei nicht geändert. Die öffentliche Domain zeigt weiterhin auf die bisherige United-Domains-Parkseite.
 
