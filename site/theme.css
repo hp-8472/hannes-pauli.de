@@ -1,114 +1,69 @@
 :root {
   color-scheme: light;
-  --paper: #f7f7f0;
-  --ink: #20372d;
-  --muted: #58694e;
-  --green: #183e35;
-  --line: #d0d9c9;
-  --accent: #47694b;
-  --accent-hover: #36573a;
+  --paper: #f1f5f7;
+  --surface: #e4edf2;
+  --ink: #153044;
+  --muted: #435f70;
+  --accent: #1b5872;
+  --accent-hover: #12475f;
   --on-accent: #ffffff;
-  --soft-text: #53684a;
-  --surface: #e7ebdf;
-  --surface-section: #eef0e7;
-  --surface-card: #f7f7f0;
-  --surface-art: #e1e7d7;
-  --surface-hover: #e3e9d8;
-  --strong-line: #758968;
-  --shadow: #183e351a;
-  --art-text: #3d5e40;
-  --art-muted: #53684a;
-  --art-grid: #a9bcb0;
-  --art-line: #829e87;
-  --art-edge: #6c8861;
-  --art-fill: #eff1e5;
-  --art-signal: #5b7d3f;
-  --chip-from: #315c4f;
-  --chip-to: #163e33;
-  --chip-edge: #123a2d;
-  --chip-ink: #f0f2e9;
-  --chip-label: #c3d5ac;
-  --board-fill: #cbd8ba;
-  --board-mid: #c2ceb1;
-  --board-mid-edge: #8da079;
-  --board-back: #b6c4a6;
-  --board-back-edge: #80956e;
-  --board-stripe: #a2b691;
-  --board-chip: #355541;
-  --board-chip-border: #42613d;
-  --board-chip-shadow: #97ae82;
-  --board-chip-shadow-edge: #708960;
-  --board-label: #3d5b32;
-  --board-screw: #e0e8d1;
-  --board-screw-edge: #779363;
+  --line: #c5d3dc;
+  --strong-line: #718998;
+  --surface-hover: #d7e7ef;
+  --field: #ffffff;
+  --focus: #1b5872;
+  --shadow: #1530441c;
+  --diagram-fill: #f8fbfc;
+  --diagram-stroke: #6e8798;
+  --diagram-text: #153044;
+  --signal-in: #1b5872;
+  --signal-out: #b54b25;
 }
 
 @media screen and (prefers-color-scheme: dark) {
   :root {
     color-scheme: dark;
-    --paper: #121715;
-    --ink: #f0f2e9;
-    --muted: #acb7ad;
-    --green: #1d3329;
-    --line: #344139;
-    --accent: #c6dda5;
-    --accent-hover: #d9ecbb;
-    --on-accent: #17241a;
-    --soft-text: #b7c8a7;
-    --surface: #1b251f;
-    --surface-section: #171e1a;
-    --surface-card: #1b231d;
-    --surface-art: #222e24;
-    --surface-hover: #2b3b2b;
-    --strong-line: #759565;
-    --shadow: #00000055;
-    --art-text: #d0ddbf;
-    --art-muted: #b7c8a4;
-    --art-grid: #768d70;
-    --art-line: #6d8869;
-    --art-edge: #a3bf8b;
-    --art-fill: #233327;
-    --art-signal: #b3cd8d;
-    --chip-from: #36533b;
-    --chip-to: #1b3426;
-    --chip-edge: #8ca66b;
-    --board-fill: #30442e;
-    --board-mid: #293a26;
-    --board-mid-edge: #688257;
-    --board-back: #22311f;
-    --board-back-edge: #55714c;
-    --board-stripe: #55734a;
-    --board-chip: #14291d;
-    --board-chip-border: #c0d39f;
-    --board-chip-shadow: #79935f;
-    --board-chip-shadow-edge: #a2b985;
-    --board-label: #d1dfc3;
-    --board-screw: #273e29;
-    --board-screw-edge: #a3bb84;
+    --paper: #152532;
+    --surface: #1d3344;
+    --ink: #e7edf2;
+    --muted: #b7c5d0;
+    --accent: #8bc5dc;
+    --accent-hover: #acd7e9;
+    --on-accent: #152532;
+    --line: #3c5567;
+    --strong-line: #829cab;
+    --surface-hover: #28465a;
+    --field: #152532;
+    --focus: #b6def0;
+    --shadow: #09131c55;
+    --diagram-fill: #1d3344;
+    --diagram-stroke: #95afbf;
+    --diagram-text: #e7edf2;
+    --signal-in: #8bc5dc;
+    --signal-out: #f39b70;
   }
 }
 
-.hil-panel {
-  --ink: #f0f2e9;
-  --muted: #bdcdbf;
-  --soft-text: #b7cb9f;
-  --accent: #c6dda5;
-  --accent-hover: #d9ecbb;
-  --on-accent: #17241a;
-  --line: #455c3e;
-  --strong-line: #58724e;
-  --art-muted: #c6d6bb;
-  --art-text: #c6d6bb;
-  --art-edge: #a3bf8b;
-}
-
 @media print {
-  :root { color-scheme: light; --paper: #fff; }
-  .hil-panel {
-    --ink: #20372d;
-    --muted: #4c5e50;
-    --accent: #405d32;
-    --on-accent: #fff;
-    --soft-text: #405d32;
+  :root {
+    color-scheme: light;
+    --paper: #ffffff;
+    --surface: #ffffff;
+    --ink: #153044;
+    --muted: #354e60;
+    --accent: #153044;
+    --accent-hover: #153044;
+    --on-accent: #ffffff;
+    --line: #becbd3;
+    --strong-line: #708594;
+    --surface-hover: #ffffff;
+    --field: #ffffff;
+    --focus: #153044;
+    --shadow: transparent;
+    --diagram-fill: #ffffff;
+    --diagram-stroke: #6e8798;
+    --diagram-text: #153044;
+    --signal-in: #1b5872;
+    --signal-out: #8d3b1d;
   }
 }

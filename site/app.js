@@ -32,26 +32,19 @@ window.matchMedia('(min-width: 901px)').addEventListener('change', closeMenu);
 // Erschwert einfaches Auslesen, ist kein vollstaendiger Spamschutz.
 const mailbox = ['mail', 'hannes-pauli', 'de'];
 const emailAddress = () => `${mailbox[0]}@${mailbox[1]}.${mailbox[2]}`;
-const revealEmail = document.querySelector('[data-reveal-email]');
+const emailLink = document.querySelector('[data-email-link]');
 const copyEmail = document.querySelector('[data-copy-email]');
 
-revealEmail?.addEventListener('click', () => {
-  const details = document.querySelector('#email-details');
-  const link = document.createElement('a');
-  link.className = 'email-link';
-  link.href = `mailto:${emailAddress()}?subject=${encodeURIComponent('Anfrage zu Embedded Systems Development')}`;
-  link.append(document.createTextNode(emailAddress() + ' '));
-  const arrow = document.createElement('span');
-  arrow.setAttribute('aria-hidden', 'true');
-  arrow.textContent = '↗';
-  link.append(arrow);
-  details.append(link);
-  details.hidden = false;
-  revealEmail.hidden = true;
-  copyEmail.hidden = false;
-  document.querySelector('.copy-feedback').textContent = 'E-Mail-Adresse eingeblendet.';
-  link.focus();
-});
+if (emailLink) {
+  emailLink.href = `mailto:${emailAddress()}?subject=${encodeURIComponent('Anfrage zu Embedded Systems Development')}`;
+  emailLink.addEventListener('click', () => {
+    const details = document.querySelector('#email-details');
+    details.textContent = emailAddress();
+    details.hidden = false;
+    copyEmail.hidden = false;
+    document.querySelector('.copy-feedback').textContent = 'Falls sich kein E-Mail-Programm öffnet, können Sie die Adresse kopieren.';
+  });
+}
 
 copyEmail?.addEventListener('click', async () => {
   const feedback = document.querySelector('.copy-feedback');
@@ -60,39 +53,5 @@ copyEmail?.addEventListener('click', async () => {
     feedback.textContent = 'E-Mail-Adresse kopiert.';
   } catch {
     feedback.textContent = `Bitte kopieren Sie die Adresse direkt: ${emailAddress()}`;
-  }
-});
-
-const contactForm = document.querySelector('[data-contact-form]');
-contactForm?.addEventListener('submit', async (event) => {
-  event.preventDefault();
-  const submit = contactForm.querySelector('[type="submit"]');
-  const status = contactForm.querySelector('.form-status');
-  if (submit.disabled) return;
-  submit.disabled = true;
-  status.textContent = 'Ihre Anfrage wird übertragen.';
-  const controller = new AbortController();
-  const timeout = window.setTimeout(() => controller.abort(), 20000);
-  try {
-    const response = await fetch(contactForm.action, {
-      method: 'POST',
-      credentials: 'omit',
-      headers: { 'Accept': 'application/json' },
-      body: new URLSearchParams(new FormData(contactForm)),
-      signal: controller.signal,
-    });
-    const result = await response.json().catch(() => ({}));
-    if (!response.ok) {
-      const errors = Array.isArray(result.errors) ? result.errors.map((error) => error.message).filter(Boolean).join(' ') : '';
-      status.textContent = errors || result.error || 'Die Anfrage konnte nicht übertragen werden. Bitte versuchen Sie es erneut.';
-      return;
-    }
-    contactForm.reset();
-    status.textContent = 'Vielen Dank. Ihre Anfrage wurde übermittelt.';
-  } catch {
-    status.textContent = 'Die Verbindung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut oder nutzen Sie die E-Mail-Adresse.';
-  } finally {
-    window.clearTimeout(timeout);
-    submit.disabled = false;
   }
 });

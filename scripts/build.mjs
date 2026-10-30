@@ -1,44 +1,40 @@
-import { readFile, readdir, mkdir, writeFile } from 'node:fs/promises';
+import { readFile, readdir, mkdir, writeFile, lstat, rm } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
-const marker = '__FORM_ENDPOINT__';
-
-export function validateFormEndpoint(value) {
-  if (typeof value !== 'string' || !value.trim()) {
-    throw new Error('Formspree-Endpoint fehlt: In site.config.json muss formEndpoint auf die echte Formularadresse aus dem Formspree-Konto gesetzt werden.');
-  }
-  const endpoint = value.trim();
-  if (!/^https:\/\/formspree\.io\/f\/[A-Za-z0-9]+$/.test(endpoint)) {
-    throw new Error('Ungültiger Formspree-Endpoint: Erlaubt ist nur https://formspree.io/f/ gefolgt von der tatsächlichen Formular-ID, ohne weitere Pfade, Query oder Fragment.');
-  }
-  return endpoint;
-}
+const forbiddenReferences = ['__FORM_ENDPOINT__', '__qa', '/api/contact', '.chatgpt.site', 'formspree.io'];
 
 async function build() {
-  const config = JSON.parse(await readFile(path.join(root, 'site.config.json'), 'utf8'));
-  const endpoint = validateFormEndpoint(config.formEndpoint);
   const source = path.join(root, 'site');
   const files = await readdir(source, { withFileTypes: true });
   const output = [];
-  let replacements = 0;
   for (const file of files) {
-    if (!file.isFile() || !/\.(html|css|js|svg)$/.test(file.name)) {
+    if (!file.isFile() || !/\.(html|css|js|svg)$/i.test(file.name)) {
       throw new Error(`Unerwartete Quelldatei: ${file.name}`);
     }
     const content = await readFile(path.join(source, file.name), 'utf8');
-    replacements += content.split(marker).length - 1;
-    const rendered = content.replaceAll(marker, endpoint);
-    if (rendered.includes(marker) || rendered.includes('/api/contact') || rendered.includes('.chatgpt.site')) {
-      throw new Error(`Nicht veröffentlichbarer Verweis in ${file.name}.`);
+    const forbidden = forbiddenReferences.find(value => content.toLowerCase().includes(value.toLowerCase()));
+    if (forbidden) {
+      throw new Error(`Nicht veröffentlichbare Altlast in ${file.name}: ${forbidden}.`);
     }
-    output.push([file.name, rendered]);
+    output.push([file.name, content]);
   }
-  if (replacements !== 1) throw new Error('Das Kontaktformular muss genau eine konfigurierbare Formularadresse enthalten.');
   if (!output.some(([name]) => name === 'index.html')) throw new Error('Die Startseite fehlt.');
   // Erst nach vollständiger Prüfung Dateien für die Veröffentlichung erzeugen.
-  const destination = path.join(root, 'dist');
+  const destination = path.resolve(root, 'dist');
+  if (path.dirname(destination) !== path.resolve(root) || path.basename(destination) !== 'dist') {
+    throw new Error('Ungültiger Ausgabepfad.');
+  }
+  const existingDestination = await lstat(destination).catch(error => {
+    if (error.code !== 'ENOENT') throw error;
+    return null;
+  });
+  if (existingDestination && (existingDestination.isSymbolicLink() || !existingDestination.isDirectory())) {
+    throw new Error('dist/ muss ein Verzeichnis sein und darf kein symbolischer Link sein.');
+  }
+  // Das geprüfte Ausgabeverzeichnis vollständig erneuern, damit keine alten Dateien mitgeliefert werden.
+  await rm(destination, { recursive: true, force: true });
   await mkdir(destination, { recursive: true });
   for (const [name, content] of output) await writeFile(path.join(destination, name), content);
   await writeFile(path.join(destination, 'CNAME'), 'hannes-pauli.de\n');

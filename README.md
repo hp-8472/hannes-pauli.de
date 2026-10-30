@@ -1,46 +1,41 @@
 # hannes-pauli.de
 
-Persönliches Portfolio für Embedded Systems Development. Die öffentliche Oberfläche aus dem bisherigen Sites-Projekt wurde übernommen, Quellstand `9234b4f`. Die Seiten sind für GitHub Pages unter `https://hannes-pauli.de` vorbereitet. Es gibt hier keinen Worker, keine Datenbank und kein separates Postfach.
+Persönliches Portfolio für Embedded Systems Development, vorbereitet für GitHub Pages unter `https://hannes-pauli.de`. Der Kontakt erfolgt über einen direkten E-Mail-Button: Er öffnet das E-Mail-Programm des Besuchers mit einer neuen Nachricht an die berufliche Adresse. Die Webseite verarbeitet oder versendet selbst keine Formularnachrichten.
 
-## Stand und noch fehlendes Setup
+## Stand
 
-Diese Fassung ist ein Entwurf für den Umzug. Gewünscht ist die direkte Zustellung von Formularanfragen an das normale berufliche E-Mail-Postfach. Formspree ist dafür als noch nicht bestätigter Umsetzungsvorschlag vorbereitet. Es wurde kein Formspree-Konto eingerichtet und keine Formularadresse erfunden.
+Die Oberfläche wird als statische Webseite veröffentlicht. Die E-Mail-Zustellung übernimmt das vom Besucher verwendete E-Mail-Programm zusammen mit dessen Anbieter. Für den Betrieb der Webseite sind keine Formularanbieter, SMTP-Zugangsdaten oder eigenen Backenddienste erforderlich.
 
-Der konkrete Formular-Endpoint fehlt. `site.config.json` enthält deshalb absichtlich einen leeren Wert für `formEndpoint`. Ein Build bricht damit vor dem Erzeugen der Veröffentlichungsdateien verständlich ab. Ein eigener serverseitiger Mailversand ohne zusätzlichen Formulardienst wird ebenfalls geprüft; Hosting, Versandzugang und Einrichtung sind noch offen. Falls dieser Weg gewählt wird, müssen Integration, Endpoint-Prüfung und Datenschutzhinweise entsprechend angepasst werden.
-
-1. Im eigenen Formspree-Konto ein Formular anlegen, die normale berufliche E-Mail-Adresse als Empfänger wählen und bestätigen.
-2. Die tatsächlich von Formspree angezeigte Adresse in `site.config.json` eintragen. Erlaubt ist ausschließlich `https://formspree.io/f/` mit der konkreten Formular-ID. Diese öffentliche Formularadresse ist kein API-Schlüssel.
-3. Empfang, Antworten, Fehler und Spam-Einstellungen bei Formspree prüfen. Die Zustellung an das berufliche E-Mail-Postfach funktioniert erst nach korrekter Einrichtung und Bestätigung des Empfängers.
-4. Die Datenschutzhinweise mit der tatsächlich gewählten Formspree-Konfiguration abgleichen, einschließlich etwaiger CAPTCHA-Funktionen und der anwendbaren Vereinbarungen zur Datenverarbeitung. Es wird keine vollständige Spamvermeidung zugesagt.
+Die Domainverifizierung für das eigene GitHub-Konto wurde am 30.10.2026 abgeschlossen. Die Webrecords zeigen weiterhin auf die United-Domains-Parkseite; die Umschaltung auf GitHub Pages steht aus. Bestehende Mailrecords bleiben erhalten.
 
 ## Bauen und ansehen
 
-Node.js 24 verwenden. Es sind keine externen Pakete oder Installationsschritte erforderlich.
+Node.js 24 verwenden. Es sind keine externen Pakete, Installationsschritte oder Endpoint-Konfigurationen erforderlich.
 
 ```powershell
 npm run build
 python -m http.server 4176 --directory dist
 ```
 
-Nach erfolgreichem Build liegt die fertige Webseite in `dist/`. Die Vorschau ist dann unter `http://127.0.0.1:4176` erreichbar. Nur `dist/` veröffentlichen. `site/` enthält vor dem Build einen nicht zur Auslieferung bestimmten Konfigurationsmarker für das Formular.
+Nach erfolgreichem Build liegt die fertige Webseite in `dist/`. Die Vorschau ist unter `http://127.0.0.1:4176` erreichbar. Ausschließlich `dist/` veröffentlichen.
 
-Lokale Links und Assets sind relativ, damit auch eine Vorschau unter einem GitHub-Repositorypfad funktioniert. Canonical- und Open-Graph-Adressen zeigen auf `https://hannes-pauli.de`. `noindex` bleibt vorerst erhalten.
+Der Build übernimmt nur reguläre `.html`-, `.css`-, `.js`- und `.svg`-Dateien aus `site/`. Er prüft alle Dateien vor dem Export und bricht bei nicht vorgesehenen Quelldateien oder alten Formular-/QA-Verweisen wie `__FORM_ENDPOINT__` und `__qa` verständlich ab. Nach erfolgreicher Prüfung wird `dist/` vollständig erneuert; dadurch bleiben keine alten Konfigurations- oder Veröffentlichungsdateien zurück. Zusätzlich entstehen `CNAME` mit `hannes-pauli.de` und `.nojekyll`.
 
-## Kontaktformular
+`fonts.css` enthält lokal eingebettete WOFF2-Schriften als Data-URLs sowie die zugehörigen Lizenz- und Herkunftsangaben. Die Schriften erfordern keine externen Fontanfragen. Lokale Links und Assets sind relativ, damit auch eine Vorschau unter einem GitHub-Repositorypfad funktioniert. Canonical- und Open-Graph-Adressen zeigen auf `https://hannes-pauli.de`.
 
-Das Formular sendet direkt an Formspree und soll von dort an das normale berufliche E-Mail-Postfach zugestellt werden. Ohne JavaScript wird eine normale Formularübermittlung verwendet. Formspree zeigt dann standardmäßig seine Bestätigungsseite an. Eine eigene Weiterleitung auf `https://hannes-pauli.de/kontakt-erhalten.html` lässt sich, sofern der gewählte Tarif sie unterstützt, in den Formspree-Einstellungen setzen. Es ist keine Weiterleitung konfiguriert.
+## E-Mail-Kontakt
 
-Mit JavaScript wird derselbe `action`-Endpoint per `fetch` mit `credentials: 'omit'` verwendet. Der Honeypot heißt `_gotcha`. Empfang und Fehlermeldungen müssen nach Einrichtung mit und ohne JavaScript geprüft werden. Die Mengenbegrenzungen des alten Sites-Workers werden hier nicht übernommen; es gelten die eingerichteten Formspree-Einstellungen und Dienstgrenzen.
+Der E-Mail-Button verwendet einen `mailto:`-Link. Der Besucher formuliert und versendet seine Nachricht im eigenen E-Mail-Programm. Ein Klick allein sendet keine Nachricht, und die Webseite kann den späteren Versand oder Empfang nicht bestätigen. Ein lokal eingerichtetes E-Mail-Programm oder eine passende Webmail-Zuordnung ist dafür erforderlich.
 
-Die E-Mail-Adresse im Kontaktbereich erscheint nach Klick; im Impressum bleibt sie ohne JavaScript lesbar. Dies erschwert lediglich einfaches Auslesen.
+Die veröffentlichte berufliche E-Mail-Adresse kann aus dem Link ausgelesen werden; ein vollständiger Schutz vor unerwünschten Nachrichten wird nicht zugesagt.
 
 ## GitHub Pages und Domain
 
-Der Workflow `.github/workflows/pages.yml` baut bei einem Push auf `main` oder einem manuellen Start und veröffentlicht ausschließlich `dist/`. Bei fehlender Formularadresse wird kein Artefakt hochgeladen und keine neue Version veröffentlicht. Im Repository ist GitHub Actions als Veröffentlichungsquelle eingestellt. Der Entwurf liegt zunächst auf `task/github-pages-umzug`.
+Der Workflow `.github/workflows/pages.yml` baut bei einem Push auf `main` oder einem manuellen Start und veröffentlicht ausschließlich `dist/`. Ein abgebrochener Build erzeugt kein neues Veröffentlichungsartefakt. Im Repository ist GitHub Actions als Veröffentlichungsquelle eingestellt. Die Umzugsvorbereitung liegt zunächst auf `task/github-pages-umzug`.
 
 Der Build erzeugt `CNAME` mit `hannes-pauli.de` sowie `.nojekyll`. `hannes-pauli.de` ist bereits als benutzerdefinierte Domain in GitHub Pages gespeichert. Die Domain wurde am 30.10.2026 durch einen zusätzlichen DNS-TXT-Nachweis erfolgreich für das eigene GitHub-Konto verifiziert; der Status steht unter [GitHub Settings](https://github.com/settings/pages). Diesen TXT-Eintrag beibehalten. Web- und E-Mail-Records wurden dabei nicht geändert. Die öffentliche Domain zeigt weiterhin auf die bisherige United-Domains-Parkseite.
 
-Nach Einrichtung des Formularversands und erfolgreichem Build die Domainzuordnung prüfen. Anschließend bei United Domains nur die Webrecords anpassen:
+Nach erfolgreichem Build und Prüfung der fertigen Webseite die Domainzuordnung kontrollieren. Anschließend bei United Domains ausschließlich die Webrecords anpassen:
 
 | Name | Typ | Ziel |
 | --- | --- | --- |
@@ -56,8 +51,5 @@ Details: [GitHub-Domainkonfiguration](https://docs.github.com/en/pages/configuri
 
 ## Offizielle Hinweise
 
-- [Formspree-Dokumentation](https://help.formspree.io/)
-- [Formspree: Honeypot](https://help.formspree.io/articles/building-your-form/honeypot-spam-filtering/)
-- [Formspree: Sicherheit](https://formspree.io/security/)
-- [Formspree: Datenschutz](https://formspree.io/legal/privacy-policy/)
 - [GitHub Pages: eigene Workflows](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
+- [GitHub Pages: Domainverifizierung](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/verifying-your-custom-domain-for-github-pages)
