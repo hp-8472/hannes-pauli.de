@@ -6,7 +6,7 @@ Persönliches Portfolio für Embedded Systems Development. Die öffentliche Ober
 
 Diese Fassung ist ein Entwurf für den Umzug. Gewünscht ist die direkte Zustellung von Formularanfragen an das normale berufliche E-Mail-Postfach. Formspree ist dafür als noch nicht bestätigter Umsetzungsvorschlag vorbereitet. Es wurde kein Formspree-Konto eingerichtet und keine Formularadresse erfunden.
 
-Der konkrete Formular-Endpoint fehlt. `site.config.json` enthält deshalb absichtlich einen leeren Wert für `formEndpoint`. Ein Build bricht damit vor dem Erzeugen der Veröffentlichungsdateien verständlich ab. Falls ein anderer Versandweg gewählt wird, müssen Integration und Datenschutzhinweise entsprechend angepasst werden.
+Der konkrete Formular-Endpoint fehlt. `site.config.json` enthält deshalb absichtlich einen leeren Wert für `formEndpoint`. Ein Build bricht damit vor dem Erzeugen der Veröffentlichungsdateien verständlich ab. Ein eigener serverseitiger Mailversand ohne zusätzlichen Formulardienst wird ebenfalls geprüft; Hosting, Versandzugang und Einrichtung sind noch offen. Falls dieser Weg gewählt wird, müssen Integration, Endpoint-Prüfung und Datenschutzhinweise entsprechend angepasst werden.
 
 1. Im eigenen Formspree-Konto ein Formular anlegen, die normale berufliche E-Mail-Adresse als Empfänger wählen und bestätigen.
 2. Die tatsächlich von Formspree angezeigte Adresse in `site.config.json` eintragen. Erlaubt ist ausschließlich `https://formspree.io/f/` mit der konkreten Formular-ID. Diese öffentliche Formularadresse ist kein API-Schlüssel.
@@ -38,9 +38,9 @@ Die E-Mail-Adresse im Kontaktbereich erscheint nach Klick; im Impressum bleibt s
 
 Der Workflow `.github/workflows/pages.yml` baut bei einem Push auf `main` oder einem manuellen Start und veröffentlicht ausschließlich `dist/`. Bei fehlender Formularadresse wird kein Artefakt hochgeladen und keine neue Version veröffentlicht. Im Repository ist GitHub Actions als Veröffentlichungsquelle eingestellt. Der Entwurf liegt zunächst auf `task/github-pages-umzug`.
 
-Der Build erzeugt `CNAME` mit `hannes-pauli.de` sowie `.nojekyll`. `hannes-pauli.de` ist bereits als benutzerdefinierte Domain in GitHub Pages gespeichert. Die Domain-Verifizierung wurde unter [GitHub Settings](https://github.com/settings/pages_verified_domains/hannes-pauli.de) vorbereitet, der dort angezeigte DNS-TXT-Nachweis steht noch aus. DNS wurde nicht geändert. Die öffentliche Domain zeigt weiterhin auf die bisherige United-Domains-Parkseite.
+Der Build erzeugt `CNAME` mit `hannes-pauli.de` sowie `.nojekyll`. `hannes-pauli.de` ist bereits als benutzerdefinierte Domain in GitHub Pages gespeichert. Die Domain wurde am 30.10.2026 durch einen zusätzlichen DNS-TXT-Nachweis erfolgreich für das eigene GitHub-Konto verifiziert; der Status steht unter [GitHub Settings](https://github.com/settings/pages). Diesen TXT-Eintrag beibehalten. Web- und E-Mail-Records wurden dabei nicht geändert. Die öffentliche Domain zeigt weiterhin auf die bisherige United-Domains-Parkseite.
 
-Nach Einrichtung des Formularversands und erfolgreichem Build zuerst den Domainnachweis abschließen und die Domainzuordnung prüfen. Anschließend bei United Domains nur die Webrecords anpassen:
+Nach Einrichtung des Formularversands und erfolgreichem Build die Domainzuordnung prüfen. Anschließend bei United Domains nur die Webrecords anpassen:
 
 | Name | Typ | Ziel |
 | --- | --- | --- |
