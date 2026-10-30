@@ -100,3 +100,6 @@ summary,.menu-toggle,.copy-email,.nav-contact{min-height:44px}
 @media(max-width:1000px){.career-timeline>li{grid-template-columns:1fr;gap:8px}.career-timeline .career-period br{display:none}.career-content p{font-size:13px}}
 @media(max-width:600px){.profile-copy .career-label{margin-top:31px}.career-timeline>li{padding:21px 0}.career-content h3{font-size:20px}.career-content p{font-size:14px}}
 @media print{.career-timeline>li{break-inside:avoid;grid-template-columns:138px minmax(0,1fr);padding:14px 0}.career-timeline .career-period,.career-content p{color:var(--ink)}}
+
+.hil-section-label{margin-bottom:24px;color:var(--ink)}
+@media(max-width:600px){.hil-section-label{margin-bottom:20px}}
