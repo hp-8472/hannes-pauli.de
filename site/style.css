@@ -88,3 +88,15 @@ summary,.menu-toggle,.copy-email,.nav-contact{min-height:44px}
 
 .contact-reveal{border:0;border-bottom:1px solid var(--strong-line);border-radius:0;padding:0 0 6px}
 .form-field input::placeholder,.form-field textarea::placeholder{color:var(--muted);opacity:1}
+
+/* Beruflicher Werdegang */
+.profile-copy .career-label{margin-top:38px;margin-bottom:4px;color:var(--soft-text)}
+.career-timeline{list-style:none;padding:0;margin:0}
+.career-timeline>li{display:grid;grid-template-columns:138px minmax(0,1fr);gap:22px;padding:23px 0;border-top:1px solid var(--line)}
+.career-timeline>li:first-child{border-top:0}
+.career-timeline .career-period{margin:2px 0 0;font-family:var(--mono);font-size:12px;line-height:1.8;color:var(--muted)}
+.career-content h3{font-size:19px;line-height:1.4;font-weight:500;letter-spacing:-.025em;overflow-wrap:anywhere}
+.career-content p{font-size:14px;line-height:1.8;color:var(--muted);margin-top:9px}
+@media(max-width:1000px){.career-timeline>li{grid-template-columns:1fr;gap:8px}.career-timeline .career-period br{display:none}.career-content p{font-size:13px}}
+@media(max-width:600px){.profile-copy .career-label{margin-top:31px}.career-timeline>li{padding:21px 0}.career-content h3{font-size:20px}.career-content p{font-size:14px}}
+@media print{.career-timeline>li{break-inside:avoid;grid-template-columns:138px minmax(0,1fr);padding:14px 0}.career-timeline .career-period,.career-content p{color:var(--ink)}}
