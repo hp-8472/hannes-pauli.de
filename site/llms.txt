@@ -1,0 +1,17 @@
+# Hannes Pauli, Embedded Systems Development
+
+> Freiberuflicher Embedded-Entwickler und Diplom-Informatiker mit Entwicklungserfahrung seit 2008. Firmware in C/C++, Hardwareentwicklung, FPGA/DSP und automatisierte Hardwaretests.
+
+Dies ist eine kurze Inhaltsübersicht des öffentlichen Portfolios. Maßgeblich für aktuelle Angaben sind die verlinkten Abschnitte auf hannes-pauli.de.
+
+## Portfolio
+
+- [Agentic HIL](https://hannes-pauli.de/#agentic-hil): Eigenes Open-Source-Projekt für KI-gestützte Firmwareentwicklung mit kontrolliertem Hardwarezugriff und nachvollziehbaren Tests.
+- [Leistungen](https://hannes-pauli.de/#leistungen): Firmware entwickeln, Elektronik entwickeln, bestehende Systeme weiterentwickeln und Verhalten durch Tests nachweisen.
+- [Projekterfahrung](https://hannes-pauli.de/#projekte): Sensor- und Detektorsteuerung, Fluidik, eigene FPV-HF-Hardware, optische Bank, Medizintechnik-Plattform, FPGA-Signalverarbeitung und weitere Praxisbeispiele.
+- [Beruflicher Werdegang](https://hannes-pauli.de/#profil): Freiberufliche Embedded-Entwicklung, Teamleitung, Hardware- und Systementwicklung sowie Studium.
+- [Kontakt](https://hannes-pauli.de/#kontakt): Projektanfrage per E-Mail.
+
+## Weitere Quellen
+
+- [Agentic HIL auf GitHub](https://github.com/agentic-hil/agentic-hil): Öffentlicher Quellcode des Projekts.

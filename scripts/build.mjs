@@ -3,6 +3,7 @@ import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 const root = fileURLToPath(new URL('../', import.meta.url));
+const discoveryFiles = new Set(['robots.txt', 'sitemap.xml', 'llms.txt', 'indexnow-key.txt']);
 const forbiddenReferences = ['__FORM_ENDPOINT__', '__qa', '/api/contact', '.chatgpt.site', 'formspree.io'];
 
 async function build() {
@@ -10,7 +11,7 @@ async function build() {
   const files = await readdir(source, { withFileTypes: true });
   const output = [];
   for (const file of files) {
-    if (!file.isFile() || !/\.(html|css|js|svg)$/i.test(file.name)) {
+    if (!file.isFile() || (!/\.(html|css|js|svg)$/i.test(file.name) && !discoveryFiles.has(file.name))) {
       throw new Error(`Unerwartete Quelldatei: ${file.name}`);
     }
     const content = await readFile(path.join(source, file.name), 'utf8');
