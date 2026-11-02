@@ -17,6 +17,7 @@
   <meta property="og:url" content="https://hannes-pauli.de/">
   <title>Hannes Pauli | Embedded Systems Development</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <script src="./theme.js"></script>
   <link rel="stylesheet" href="./style.css">
   <link rel="stylesheet" href="./theme.css">
   <script type="application/ld+json">
@@ -81,7 +82,6 @@
       <span class="brand-symbol" aria-hidden="true">hp<span>.</span></span>
       <span class="brand-name">Hannes Pauli<span>Embedded Systems<br>Development</span></span>
     </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navigation">Menü <span aria-hidden="true">＋</span></button>
     <nav id="navigation" class="navigation" aria-label="Hauptnavigation">
       <a href="#agentic-hil">Agentic HIL</a>
       <a href="#leistungen">Leistungen</a>
@@ -89,6 +89,10 @@
       <a href="#profil">Über mich</a>
       <a class="nav-contact" href="#kontakt">Kontakt </a>
     </nav>
+    <div class="header-actions">
+      <label class="theme-control" hidden><span class="sr-only">Farbschema</span><select data-theme-select aria-label="Farbschema"><option value="system">System</option><option value="dark">Dunkel</option><option value="light">Hell</option></select></label>
+      <button class="menu-toggle" type="button" aria-label="Menü" aria-expanded="false" aria-controls="navigation"><span class="menu-label">Menü</span><span class="menu-symbol" aria-hidden="true">＋</span></button>
+    </div>
   </header>
 
   <main id="inhalt">
