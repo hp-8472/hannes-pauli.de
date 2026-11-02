@@ -10,7 +10,9 @@ Die Domainumstellung wurde am 30.10.2026 abgeschlossen. Die Hauptdomain verweist
 
 ## Gestaltung und Inhalte
 
-Die Gestaltung greift seit 02.11.2026 den ersten Entwurf wieder auf: grüne Akzente, Chipgrafik im Einstieg und drei bebilderte Projektkarten. Weitere sechs Praxisbeispiele und der vollständige chronologische Werdegang sind in nativen, standardmäßig geschlossenen Aufklappbereichen erhalten. Die Projektillustrationen sind schematische Darstellungen, keine Fotos der Kundenhardware. Helle und dunkle Farben folgen der Systemeinstellung. Alle Inhalte bleiben als HTML ohne JavaScript zugänglich.
+Die Gestaltung greift seit 02.11.2026 den ersten Entwurf wieder auf: grüne Akzente, Chipgrafik im Einstieg und drei bebilderte Projektkarten. Weitere sechs Praxisbeispiele und der vollständige chronologische Werdegang sind in nativen, standardmäßig geschlossenen Aufklappbereichen erhalten. Die Projektillustrationen sind schematische Darstellungen, keine Fotos der Kundenhardware. Alle Inhalte bleiben als HTML ohne JavaScript zugänglich.
+
+Der kleine Farbschema-Schalter in der Kopfzeile bietet „System“, „Dunkel“ und „Hell“ auf allen Seiten. Standardmäßig gelten die Systemeinstellungen. Eine manuelle Auswahl wird lokal unter `hp-color-mode` gespeichert und vor dem ersten Seitenaufbau angewendet; „System“ entfernt diesen Wert. Bei blockiertem Browserspeicher funktioniert die Auswahl für die aktuelle Seite. Ohne JavaScript folgt die Darstellung weiter dem System. Die Druckansicht bleibt hell. Es werden keine Farbauswahlen an einen Server übertragen.
 
 ## Bauen und ansehen
 

@@ -44,7 +44,52 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --paper: #121715;
+    --ink: #f0f2e9;
+    --muted: #acb7ad;
+    --green: #1d3329;
+    --line: #344139;
+    --accent: #c6dda5;
+    --accent-hover: #d9ecbb;
+    --on-accent: #17241a;
+    --soft-text: #b7c8a7;
+    --surface: #1b251f;
+    --surface-section: #171e1a;
+    --surface-card: #1b231d;
+    --surface-art: #222e24;
+    --surface-hover: #2b3b2b;
+    --strong-line: #759565;
+    --shadow: #00000055;
+    --art-text: #d0ddbf;
+    --art-muted: #b7c8a4;
+    --art-grid: #768d70;
+    --art-line: #6d8869;
+    --art-edge: #a3bf8b;
+    --art-fill: #233327;
+    --art-signal: #b3cd8d;
+    --chip-from: #36533b;
+    --chip-to: #1b3426;
+    --chip-edge: #8ca66b;
+    --board-fill: #30442e;
+    --board-mid: #293a26;
+    --board-mid-edge: #688257;
+    --board-back: #22311f;
+    --board-back-edge: #55714c;
+    --board-stripe: #55734a;
+    --board-chip: #14291d;
+    --board-chip-border: #c0d39f;
+    --board-chip-shadow: #79935f;
+    --board-chip-shadow-edge: #a2b985;
+    --board-label: #d1dfc3;
+    --board-screw: #273e29;
+    --board-screw-edge: #a3bb84;
+  }
+}
+
+@media screen {
+  :root[data-theme="dark"] {
     color-scheme: dark;
     --paper: #121715;
     --ink: #f0f2e9;
