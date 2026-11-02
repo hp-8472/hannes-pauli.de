@@ -48,6 +48,7 @@ em { font-family: var(--serif); font-weight: 400; }
 .menu-toggle { display: none; }
 .header-actions { display: flex; align-items: center; gap: 14px; flex-shrink: 0; }
 .header-picker { position: relative; flex-shrink: 0; }
+.language-control { flex-shrink: 0; }
 .picker-trigger { display: grid; place-items: center; width: 44px; height: 44px; padding: 11px; border: 1px solid var(--line); border-radius: 4px; background: var(--paper); color: var(--muted); cursor: pointer; list-style: none; }
 .picker-trigger::-webkit-details-marker { display: none; }
 .picker-trigger:hover, .header-picker[open] > .picker-trigger { background: var(--surface-hover); color: var(--ink); }
@@ -324,7 +325,7 @@ summary::-webkit-details-marker { display: none; }
 @media print {
   :root { color-scheme: light; --paper: #fff; --ink: #232321; --accent: #6b5212; --muted: #54544e; }
   body, .projects, .project-card, .hil-panel { background: #fff; color: #232321; }
-  .navigation, .menu-toggle, .header-picker, .hero-art, .project-visual, .hil-diagram, .hero-actions, .copy-email, .skip-link { display: none !important; }
+  .navigation, .menu-toggle, .header-picker, .language-control, .hero-art, .project-visual, .hil-diagram, .hero-actions, .copy-email, .skip-link { display: none !important; }
   .section-shell { padding-inline: 0; }
   .section-space { padding-block: 28px; }
   .hero, .profile, .hil-panel { display: block; }
