@@ -41,7 +41,12 @@
 
   function bindControls() {
     document.querySelectorAll('[data-theme-mode]').forEach(button => {
-      button.addEventListener('click', () => applyMode(button.dataset.themeMode, true));
+      button.addEventListener('click', () => {
+        applyMode(button.dataset.themeMode, true);
+        const picker = button.closest('.theme-control');
+        picker.open = false;
+        picker.querySelector('summary').focus();
+      });
     });
     applyMode(mode);
     document.querySelectorAll('.theme-control').forEach(control => {
