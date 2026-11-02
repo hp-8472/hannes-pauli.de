@@ -27,7 +27,12 @@ document.addEventListener('click', (event) => {
   if (!event.target.closest('.site-header')) closeMenu();
 });
 
-window.matchMedia('(min-width: 1025px)').addEventListener('change', closeMenu);
+const desktopLayout = window.matchMedia('(min-width: 1025px)');
+if (typeof desktopLayout.addEventListener === 'function') {
+  desktopLayout.addEventListener('change', closeMenu);
+} else if (typeof desktopLayout.addListener === 'function') {
+  desktopLayout.addListener(closeMenu);
+}
 
 const messages = document.documentElement.lang === 'en' ? {
   subject: 'Enquiry about Embedded Systems Development',

@@ -60,9 +60,16 @@
     bindControls();
   }
 
-  systemTheme.addEventListener('change', () => {
+  function handleSystemThemeChange() {
     if (mode === 'system') updateBrowserColor();
-  });
+  }
+
+  if (typeof systemTheme.addEventListener === 'function') {
+    systemTheme.addEventListener('change', handleSystemThemeChange);
+  } else if (typeof systemTheme.addListener === 'function') {
+    // Aeltere Safari-Versionen verwenden noch diese MediaQueryList-Schnittstelle.
+    systemTheme.addListener(handleSystemThemeChange);
+  }
 
   window.addEventListener('storage', event => {
     if (event.key === storageKey || event.key === null) applyMode(event.newValue);
