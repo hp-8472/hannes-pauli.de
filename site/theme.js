@@ -21,8 +21,8 @@
   function applyMode(value, persist = false) {
     mode = validMode(value);
     document.documentElement.dataset.theme = mode;
-    document.querySelectorAll('[data-theme-select]').forEach(select => {
-      select.value = mode;
+    document.querySelectorAll('[data-theme-mode]').forEach(button => {
+      button.setAttribute('aria-pressed', String(button.dataset.themeMode === mode));
     });
     updateBrowserColor();
 
@@ -39,19 +39,20 @@
   // Vor dem Laden der Styles ausfuehren, um einen Farbwechsel beim Start zu vermeiden.
   applyMode(mode);
 
-  function bindSelects() {
-    document.querySelectorAll('[data-theme-select]').forEach(select => {
-      select.value = mode;
-      select.addEventListener('change', () => applyMode(select.value, true));
-      const control = select.closest('.theme-control');
-      if (control) control.hidden = false;
+  function bindControls() {
+    document.querySelectorAll('[data-theme-mode]').forEach(button => {
+      button.addEventListener('click', () => applyMode(button.dataset.themeMode, true));
+    });
+    applyMode(mode);
+    document.querySelectorAll('.theme-control').forEach(control => {
+      control.hidden = false;
     });
   }
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindSelects, { once: true });
+    document.addEventListener('DOMContentLoaded', bindControls, { once: true });
   } else {
-    bindSelects();
+    bindControls();
   }
 
   systemTheme.addEventListener('change', () => {
