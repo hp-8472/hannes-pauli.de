@@ -8,6 +8,10 @@ Die statische Webseite wurde am 30.10.2026 erstmals erfolgreich mit GitHub Actio
 
 Die Domainumstellung wurde am 30.10.2026 abgeschlossen. Die Hauptdomain verweist über vier A-Records auf GitHub Pages; `www` zeigt per CNAME auf `hp-8472.github.io` und wird zur Hauptdomain weitergeleitet. Das Zertifikat ist gültig und „Enforce HTTPS“ aktiviert. Die bestehenden Mailrecords und der GitHub-Domainnachweis sind erhalten.
 
+## Gestaltung und Inhalte
+
+Die Gestaltung greift seit 02.11.2026 den ersten Entwurf wieder auf: grüne Akzente, Chipgrafik im Einstieg und drei bebilderte Projektkarten. Weitere sechs Praxisbeispiele und der vollständige chronologische Werdegang sind in nativen, standardmäßig geschlossenen Aufklappbereichen erhalten. Die Projektillustrationen sind schematische Darstellungen, keine Fotos der Kundenhardware. Helle und dunkle Farben folgen der Systemeinstellung. Alle Inhalte bleiben als HTML ohne JavaScript zugänglich.
+
 ## Bauen und ansehen
 
 Node.js 24 verwenden. Es sind keine externen Pakete, Installationsschritte oder Endpoint-Konfigurationen erforderlich.
