@@ -15,3 +15,12 @@ Dies ist eine kurze Inhaltsübersicht des öffentlichen Portfolios. Maßgeblich 
 ## Weitere Quellen
 
 - [Agentic HIL auf GitHub](https://github.com/agentic-hil/agentic-hil): Öffentlicher Quellcode des Projekts.
+
+## English portfolio
+
+- [English version](https://hannes-pauli.de/en.html): Hannes Pauli, freelance embedded systems developer and Diplom-Informatiker with development experience since 2008. C/C++ firmware, circuit design, PCB layout, FPGA/DSP and automated hardware tests.
+- [Agentic HIL](https://hannes-pauli.de/en.html#agentic-hil): Open-source project for AI-assisted firmware development with controlled hardware access and reproducible tests.
+- [Services](https://hannes-pauli.de/en.html#leistungen): Firmware development, circuit design and PCB layout for sensors and RF hardware using EAGLE, KiCad and Altium Designer, system integration and verification.
+- [Selected work](https://hannes-pauli.de/en.html#projekte): RF video hardware, optical alignment, FPGA signal processing and six further project examples.
+- [About and career](https://hannes-pauli.de/en.html#profil): Experience, qualifications and career history.
+- [Contact](https://hannes-pauli.de/en.html#kontakt): Project enquiries by email.
