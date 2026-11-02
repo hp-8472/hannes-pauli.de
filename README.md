@@ -14,6 +14,12 @@ Die Gestaltung greift seit 02.11.2026 den ersten Entwurf wieder auf: grüne Akze
 
 Der kleine Farbschema-Schalter in der Kopfzeile bietet „System“, „Dunkel“ und „Hell“ auf allen Seiten. Standardmäßig gelten die Systemeinstellungen. Eine manuelle Auswahl wird lokal unter `hp-color-mode` gespeichert und vor dem ersten Seitenaufbau angewendet; „System“ entfernt diesen Wert. Bei blockiertem Browserspeicher funktioniert die Auswahl für die aktuelle Seite. Ohne JavaScript folgt die Darstellung weiter dem System. Die Druckansicht bleibt hell. Es werden keine Farbauswahlen an einen Server übertragen.
 
+## Sprachen
+
+Deutsch bleibt unter `/`, die vollständig übersetzte englische Fassung steht unter `/en.html`. Ein direkter EN-/DE-Link in der Kopfzeile verbindet die jeweilige Sprachfassung. Es gibt keine automatische Sprachumleitung oder externe Übersetzungsdienste. Die Sprache wird durch die aufgerufene URL bestimmt, das Farbschema bleibt davon unabhängig gespeichert.
+
+Auch Rechtstexte und die alte Kontakt-Hinweisseite haben englische Gegenstücke (`legal-notice.html`, `privacy.html`, `contact.html`). Jede Seite hat eine eigene kanonische URL und gegenseitige `hreflang`-Verweise. Beide Portfoliofassungen stehen in der Sitemap; alle Rechtstexte und Kontakt-Hinweisseiten behalten `noindex, follow`. `llms.txt` verweist auf beide Portfoliofassungen. Die vollständigen Übersetzungen sind statisches HTML und auch ohne JavaScript lesbar.
+
 ## Bauen und ansehen
 
 Node.js 24 verwenden. Es sind keine externen Pakete, Installationsschritte oder Endpoint-Konfigurationen erforderlich.
@@ -66,7 +72,7 @@ Details: [GitHub-Domainkonfiguration](https://docs.github.com/en/pages/configuri
 
 Die kanonische Startseite ist für Indexierung und Textauszüge freigegeben. Impressum, Datenschutz und die alte Formularhinweisseite bleiben mit `noindex, follow` abrufbar, werden aber nicht als eigene Suchtreffer vorgesehen. Die frühere Sites-Kopie bleibt von der Indexierung ausgeschlossen.
 
-`robots.txt` erlaubt gewöhnlichen Suchcrawlern und den Such-/Nutzer-Agents von OpenAI, Anthropic und Perplexity den Zugriff und nennt die Sitemap. Diese Fassung schränkt Trainingscrawler nicht gesondert ein. `sitemap.xml` enthält ausschließlich die kanonische Startseite, keine Abschnittsfragmente oder ausgeschlossenen Rechtstexte.
+`robots.txt` erlaubt gewöhnlichen Suchcrawlern und den Such-/Nutzer-Agents von OpenAI, Anthropic und Perplexity den Zugriff und nennt die Sitemap. Diese Fassung schränkt Trainingscrawler nicht gesondert ein. `sitemap.xml` enthält die kanonischen deutschen und englischen Portfolio-URLs, keine Abschnittsfragmente oder ausgeschlossenen Rechtstexte.
 
 JSON-LD beschreibt Person, Website und Profilseite anhand der sichtbaren Inhalte. Telefonnummer, E-Mail-Adresse und vollständige Geschäftsanschrift werden nicht zusätzlich in diese Profildaten übernommen. Das Portfolio liegt vollständig als HTML vor und ist auch ohne JavaScript lesbar.
 

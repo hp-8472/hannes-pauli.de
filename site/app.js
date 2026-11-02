@@ -27,7 +27,19 @@ document.addEventListener('click', (event) => {
   if (!event.target.closest('.site-header')) closeMenu();
 });
 
-window.matchMedia('(min-width: 901px)').addEventListener('change', closeMenu);
+window.matchMedia('(min-width: 1025px)').addEventListener('change', closeMenu);
+
+const messages = document.documentElement.lang === 'en' ? {
+  subject: 'Enquiry about Embedded Systems Development',
+  fallback: 'If your email app does not open, you can copy the address.',
+  copied: 'Email address copied.',
+  copyManually: 'Please copy the address directly: '
+} : {
+  subject: 'Anfrage zu Embedded Systems Development',
+  fallback: 'Falls sich kein E-Mail-Programm öffnet, können Sie die Adresse kopieren.',
+  copied: 'E-Mail-Adresse kopiert.',
+  copyManually: 'Bitte kopieren Sie die Adresse direkt: '
+};
 
 // Erschwert einfaches Auslesen, ist kein vollstaendiger Spamschutz.
 const mailbox = ['mail', 'hannes-pauli', 'de'];
@@ -36,13 +48,13 @@ const emailLink = document.querySelector('[data-email-link]');
 const copyEmail = document.querySelector('[data-copy-email]');
 
 if (emailLink) {
-  emailLink.href = `mailto:${emailAddress()}?subject=${encodeURIComponent('Anfrage zu Embedded Systems Development')}`;
+  emailLink.href = `mailto:${emailAddress()}?subject=${encodeURIComponent(messages.subject)}`;
   emailLink.addEventListener('click', () => {
     const details = document.querySelector('#email-details');
     details.textContent = emailAddress();
     details.hidden = false;
     copyEmail.hidden = false;
-    document.querySelector('.copy-feedback').textContent = 'Falls sich kein E-Mail-Programm öffnet, können Sie die Adresse kopieren.';
+    document.querySelector('.copy-feedback').textContent = messages.fallback;
   });
 }
 
@@ -50,8 +62,8 @@ copyEmail?.addEventListener('click', async () => {
   const feedback = document.querySelector('.copy-feedback');
   try {
     await navigator.clipboard.writeText(emailAddress());
-    feedback.textContent = 'E-Mail-Adresse kopiert.';
+    feedback.textContent = messages.copied;
   } catch {
-    feedback.textContent = `Bitte kopieren Sie die Adresse direkt: ${emailAddress()}`;
+    feedback.textContent = `${messages.copyManually}${emailAddress()}`;
   }
 });
