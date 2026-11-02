@@ -90,7 +90,7 @@ em { font-family: var(--serif); font-weight: 400; }
 /* Agentic HIL remains the first, numbered focus. */
 .hil-section { padding-bottom: 0; }
 .hil-section-label { margin-bottom: 22px; }
-.hil-panel { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 64px; padding: 44px 48px; background: var(--green); border-radius: 5px; color: var(--ink); }
+.hil-panel { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 64px; padding: 44px 48px; background: var(--feature-surface); border-radius: 5px; color: var(--ink); }
 .hil-copy .eyebrow { color: var(--soft-text); }
 .hil-copy h2 { font-size: clamp(36px, 3.7vw, 48px); margin-top: 20px; }
 .hil-copy h2 em { color: var(--accent); }
@@ -322,8 +322,8 @@ summary::-webkit-details-marker { display: none; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
 @media print {
-  :root { color-scheme: light; --paper: #fff; --ink: #20372d; --accent: #405d32; --muted: #4c5e50; }
-  body, .projects, .project-card, .hil-panel { background: #fff; color: #20372d; }
+  :root { color-scheme: light; --paper: #fff; --ink: #232321; --accent: #6b5212; --muted: #54544e; }
+  body, .projects, .project-card, .hil-panel { background: #fff; color: #232321; }
   .navigation, .menu-toggle, .header-picker, .hero-art, .project-visual, .hil-diagram, .hero-actions, .copy-email, .skip-link { display: none !important; }
   .section-shell { padding-inline: 0; }
   .section-space { padding-block: 28px; }

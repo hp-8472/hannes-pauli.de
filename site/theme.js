@@ -12,7 +12,7 @@
 
   function updateBrowserColor() {
     const dark = mode === 'dark' || (mode === 'system' && systemTheme.matches);
-    const color = dark ? '#121715' : '#f7f7f0';
+    const color = dark ? '#101010' : '#f8f8f5';
     document.querySelectorAll('meta[name="theme-color"]').forEach(meta => {
       meta.content = color;
     });
